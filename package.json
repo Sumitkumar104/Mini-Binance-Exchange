@@ -1,5 +1,5 @@
 {
-  "name": "Y",
+  "name": "Exchange_App",
   "private": true,
   "scripts": {
     "build": "turbo build",
