@@ -6,9 +6,10 @@ import { BidTable } from "./BidTable";
 import { AskTable } from "./AskTable";
 
 export function Depth({ market }: {market: string}) {
-    const [bids, setBids] = useState<[string, string][]>();
-    const [asks, setAsks] = useState<[string, string][]>();
-    const [price, setPrice] = useState<string>();
+
+    const [bids, setBids] = useState<[string, string][]>();       // store the  price and quantity of the bids and update in realTime
+    const [asks, setAsks] = useState<[string, string][]>();      // store the  price and quantity of the asks and update in realTime
+    const [price, setPrice] = useState<string>();    // store the current price of the market
 
     useEffect(() => {
         getDepth(market).then(d => {
@@ -27,6 +28,7 @@ export function Depth({ market }: {market: string}) {
         {price && <div>{price}</div>}
         {bids && <BidTable bids={bids} />}
     </div>
+
 }
 
 function TableHeader() {

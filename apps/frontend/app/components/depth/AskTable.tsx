@@ -1,20 +1,12 @@
 
+// ask is simply to sell the asset at a certain price
+// as a prop it takes the array of array which contain the price and quantity of the asks.
+// https://exchange-proxy.100xdevs.com/api/v1/depth?symbol=SOL_USDC
 export const AskTable = ({ asks }: { asks: [string, string][] }) => {
     let currentTotal = 0;
     const relevantAsks = asks.slice(0, 15);
-    /*
-     * 129.93 10
-     * 129.94 5
-     * 132.96 3
-     * 132.97 253.03 
-     */
     relevantAsks.reverse();
-    /*
-     * 132.97 253.03     270
-     * 132.96 3    18
-     * 129.94 5    15
-     * 129.93 10   10
-     */
+   
 
     let asksWithTotal: [string, string, number][] = [];
     for (let i = relevantAsks.length - 1; i>=0; i--)  {
@@ -23,32 +15,14 @@ export const AskTable = ({ asks }: { asks: [string, string][] }) => {
     }
     const maxTotal = relevantAsks.reduce((acc, [_, quantity]) => acc + Number(quantity), 0);
 
-     /*
-     *    129.93 10   10
-
-     * 129.94 5    15
-     * 132.96 3    18
-     * 132.97 253.03     270
-     */
     asksWithTotal.reverse();
-         /*
-         * 132.97 253.03     270
-         * 132.96 3    18
-         * * 129.94 5    15
-     *    129.93 10   10
+     
 
-     */
-
+    // in return it will return the list of the asks with the price, quantity and total render with the help of map.
     return <div>
         {asksWithTotal.map(([price, quantity, total]) => <Ask maxTotal={maxTotal} key={price} price={price} quantity={quantity} total={total} />)}
     </div>
 }
-
-
-
-
-
-
 
 
 function Ask({price, quantity, total, maxTotal}: {price: string, quantity: string, total: number, maxTotal: number}) {

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Ticker } from "../utils/types";
+import type { Ticker } from "../utils/types";
 import { getTicker } from "../utils/httpClient";
 
 export const MarketBar = ({market}: {market: string}) => {
