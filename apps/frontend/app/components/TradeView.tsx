@@ -3,20 +3,20 @@ import { ChartManager } from "../utils/ChartManager";
 import { getKlines } from "../utils/httpClient";
 import { KLine } from "../utils/types";
 
-export function TradeView({
-  market,
-}: {
-  market: string;
-}) {
-  const chartRef = useRef<HTMLDivElement>(null);
+export function TradeView({market}:{ market: string;}) {
+
+  const chartRef = useRef<HTMLDivElement>(null);    // at this place we can also used the getDocumentbyId method to point that div.
   const chartManagerRef = useRef<ChartManager>(null);
 
   const init = async () => {
     let klineData: KLine[] = [];
     try {
-      klineData = await getKlines(market, "1h", Math.floor((new Date().getTime() - 1000 * 60 * 60 * 24 * 7) / 1000), Math.floor(new Date().getTime() / 1000)); 
 
-    } catch (e) { }
+      // make the backend call to get the kline data for the market.
+      klineData = await getKlines(market, "1h", Math.floor((new Date().getTime() - 1000 * 60 * 60 * 24 * 30) / 1000), Math.floor(new Date().getTime() / 1000)); 
+    } catch (e) { 
+      console.error("There is some error to show the Graph View-",e);
+    }
 
     if (chartRef) {
       if (chartManagerRef.current) {
@@ -43,13 +43,14 @@ export function TradeView({
     }
   };
 
+  // this useEffect will be called when the component is mounted(also when we do zoom in , out) and when the market changes.
   useEffect(() => {
       init();
   }, [market, chartRef]);
 
   return (
     <>
-      <div ref={chartRef} style={{ height: "520px", width: "100%", marginTop: 4 }}></div>
+      <div ref={chartRef} style={{ height: "600px", width: "100%", marginTop: 4 }}></div>
     </>
   );
 }

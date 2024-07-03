@@ -1,16 +1,15 @@
-import {
-  ColorType,
-  createChart as createLightWeightChart,
-  CrosshairMode,
-  ISeriesApi,
-  UTCTimestamp,
-} from "lightweight-charts";
+// this is class or type which represent the chart.contain how we show the chart with help of lightweights-chart library.
+// class is very helpFull in typesccript to define the type of the object.
+
+import {ColorType,createChart as createLightWeightChart,CrosshairMode,ISeriesApi,UTCTimestamp} from "lightweight-charts";
 
 export class ChartManager {
+
   private candleSeries: ISeriesApi<"Candlestick">;
   private lastUpdateTime: number = 0;
   private chart: any;
-  private currentBar: {
+
+  private currentBar: {        // store the data of current bar in chart.
     open: number | null;
     high: number | null;
     low: number | null;
@@ -22,13 +21,10 @@ export class ChartManager {
     close: null,
   };
 
-  constructor(
-    ref: any,
-    initialData: any[],
-    layout: { background: string; color: string }
-  ) {
+  constructor( ref: any, initialData: any[], layout: { background: string; color: string })
+   {
     const chart = createLightWeightChart(ref, {
-      autoSize: true,
+      autoSize: true,             // all this information is present in Docs of lightweights-chart.
       overlayPriceScales: {
         ticksVisible: true,
         borderVisible: true,
@@ -57,6 +53,8 @@ export class ChartManager {
         textColor: "white",
       },
     });
+
+    
     this.chart = chart;
     this.candleSeries = chart.addCandlestickSeries();
 
@@ -67,6 +65,8 @@ export class ChartManager {
       }))
     );
   }
+
+
   public update(updatedPrice: any) {
     if (!this.lastUpdateTime) {
       this.lastUpdateTime = new Date().getTime();
@@ -84,6 +84,8 @@ export class ChartManager {
       this.lastUpdateTime = updatedPrice.time;
     }
   }
+
+  
   public destroy() {
     this.chart.remove();
   }

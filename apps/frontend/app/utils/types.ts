@@ -12,6 +12,7 @@ export interface KLine {   // KLine is a candlestick chart that is used to repre
     volume: string;
 }
 
+// it represent the trade of that market done in recent times.
 export interface Trade {
     "id": number,
     "isBuyerMaker": boolean,
