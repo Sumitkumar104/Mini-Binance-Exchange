@@ -8,6 +8,7 @@
 
 import { Client } from "pg";
 import { createClient} from "redis";
+import { DbMessage } from "./types";
 
 
 const pgClient=new Client({
@@ -35,18 +36,33 @@ redisClient.on('error', (err) => {
     console.error('Redis error:', err);
 });
 
+redisClient.connect();
+
 console.log("connect to redis");
 
 async function main(){
      while(true)
      {
+        // console.log("1");
         const response=await redisClient.rPop("db_processor"as string);
         if(!response){
 
         }
         else
         {
-            
+            // console.log("2");
+            const data:DbMessage=JSON.parse(response);
+            if(data.type==="TRADE_ADDED")
+            {
+                // console.log("3");
+                const price=data.data.price;
+                const timestamp=new Date(data.data.timestamp);
+                const query='INSERT INTO tata_prices (time,price) VALUES ($1,$2)';
+
+                const values=[timestamp,price];
+                await pgClient.query(query,values);
+                // console.log("4");
+            }
         }
      }
 }
