@@ -1,5 +1,5 @@
 import { createClient } from "redis";
-import { Engine } from "./trade/Engine";
+import { Engine } from "./types/Engine";
 
 
 async function main() {
