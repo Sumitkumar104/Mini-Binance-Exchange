@@ -6,6 +6,8 @@ export const GET_OPEN_ORDERS = "GET_OPEN_ORDERS";
 
 export const GET_DEPTH = "GET_DEPTH";
 
+
+// this ar type of messages that recieve from the ordrbook in frontend. This message or data is reterived from the APIS.
 export type MessageFromOrderbook = {
     type: "DEPTH",
     payload: {
