@@ -52,13 +52,13 @@ export class RedisManager {
         this.client.lPush("db_processor", JSON.stringify(message));
     }
 
-    // publish message to WS server pub/subs
+    // publish message to WS server using pub/subs
     public publishMessage(channel: string, message: WsMessage) {
         this.client.publish(channel, JSON.stringify(message));
     }
 
 
-    // publish message to api server pub/subs
+    // publish message to api server using pub/subs
     public sendToApi(clientId: string, message: MessageToApi) {
         this.client.publish(clientId, JSON.stringify(message));
     }
