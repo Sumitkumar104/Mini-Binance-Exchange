@@ -1,5 +1,5 @@
 {
-  "name": "Exchange_App",
+  "name": "Mini-Binance-Exchange",
   "private": true,
   "scripts": {
     "build": "turbo build",
