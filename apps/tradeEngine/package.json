@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
   "scripts": {
     "build": "tsc",
-    "start": "WITH_SNAPSHOT=true node dist/index.js",   
-    "dev": "npm run build && WITH_SNAPSHOT=true npm run start",
+    "start": "cross-env WITH_SNAPSHOT=true node dist/index.js",
+    "dev": "npm run build && cross-env WITH_SNAPSHOT=true npm run start",
     "test": "vitest"
   },
   "keywords": [],
@@ -18,5 +17,8 @@
     "@types/redis": "^4.0.11",
     "express": "^4.19.2",
     "vitest": "^1.6.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

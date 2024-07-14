@@ -7,6 +7,9 @@ async function main() {
     const engine = new Engine(); 
     const redisClient = createClient();
     await redisClient.connect();
+
+    console.log("Connected to redis message queue in Trade engine server");
+    
     redisClient.on("error", (err) => {
         console.log("Error to connect with redis message queue-" + err);
     });

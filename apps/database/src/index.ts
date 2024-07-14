@@ -27,18 +27,15 @@ pgClient.connect().then(()=>{
     console.log("there is some  error to connect with timeScale DB-",err);
 })
 
+redisClient.connect();
 
 redisClient.on("connect",()=>{
-    console.log("connected to redis");
+    console.log("connected to database server with redis");
 })
 
 redisClient.on('error', (err) => {
     console.error('Redis error:', err);
 });
-
-redisClient.connect();
-
-console.log("connect to redis");
 
 async function main(){
      while(true)
