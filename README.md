@@ -45,13 +45,13 @@ Learn more about the power of `Turborepo`:
 
 ### Demo
 
-![Watch The Application Priview](https://imgur.com/a/JsE8cTl)
+![Watch The Application Priview](https://i.imgur.com/uqaVfjN.png)
 
 ### Backend Architecture
 
-[Architecture](https://asset.cloudinary.com/ddy4onwhe/ade7e134e5620183074241f09d2de0df)
+![Architecture](https://i.imgur.com/qf8XiiF.png)
 
 ### Docker Process View
 
-[Architecture](https://asset.cloudinary.com/ddy4onwhe/505a66e37443fa15d38326e8776ce162)
+![Architecture](https://i.imgur.com/dSHkwcA.png)
 
