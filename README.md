@@ -1,75 +1,36 @@
-# Turborepo starter
+### Project Information
 
-This is an official starter Turborepo.
+- This project is a small version of any 'Exchange' application like 'Binance, Backpack CoinDTX' etc. Here I show the Realtime price, chart, trade, asks and bids of any currency like `Bitcoin`, `Solana`, `Ethereum` and many more.
+- Here I try to implement my own backend Service for trade and RealTime logic. Use can Also see the Backend Architecture here.
 
-## Using this example
+### Setup Guide
 
-Run the following command:
+This Project contains following services and folders:
 
-```sh
-npx create-turbo@latest
-```
+- `Frontend`: A Next application to see all data of Exchange and GUI for Trading
+- `api-Server`: HTTP API Server for REST API's
+- `tradeEngine`: A highly Scalabe server which Contain the core Logic to perform all RealTime trade using Message Queue.
+- `wsSocketServer`: A Web Socket server responsible for Realtime communication between the client and server. To scale the Web Socket use the PUB/SUBS architecture
+- `DataBase`: A timeScale PostgesQL DataBase to store the market data and Trade information 
+- `Redis`: Use to implement a Message queue and a Publisher/Subscriber architecture
 
-## What's inside?
+### Local Setup
 
-This Turborepo includes the following packages/apps:
+- This repo is create with `TurboRepo`.Because TurboRepo provides efficient monorepo management, enabling `faster builds` and streamlined workflows by sharing dependencies, `caching results`, and optimizing project configurations.
 
-### Apps and Packages
+1. Run `npm run build` in root folder to build all the 5 serivces. TurboRepo start all service simultaneously.
+2. SetUp all `.env files` in all service folders.
+3. Run `docker-compose up` command to run the Redis and PostgresQL database locally.
+4. Run `npm run dev` in root folder to up all service in development enviroment.
+ 
+At this point following services would be up and running:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+| S.No | Service            | PORT    |
+| ---- | ------------------ | ------- |
+| 1    | `Frontend`         | `:3000` |
+| 2    | `Api server`       | `:4000` |
+| 3    | `Web Socket server`| `:9000` |
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
 
 Learn more about the power of Turborepo:
 
@@ -79,3 +40,16 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+### Demo
+
+[Watch The Application Priview](https://asset.cloudinary.com/ddy4onwhe/422e8f8097cd7b2210a0e32de101c8fb)
+
+### Backend Architecture
+
+[Architecture](https://asset.cloudinary.com/ddy4onwhe/ade7e134e5620183074241f09d2de0df)
+
+### Docker Process View
+
+[Architecture](https://asset.cloudinary.com/ddy4onwhe/505a66e37443fa15d38326e8776ce162)
+
