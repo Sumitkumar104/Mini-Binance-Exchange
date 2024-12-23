@@ -1,3 +1,8 @@
+### Demo
+
+![Watch The Application Priview](https://i.imgur.com/uqaVfjN.png)
+
+
 ### Project Information
 
 - This project is a small version of any `Exchange` application like `Binance, Backpack CoinDTX` etc. Here I show the Realtime price, chart, trade, asks and bids of any currency like `Bitcoin`, `Solana`, `Ethereum` and many more.
@@ -43,9 +48,6 @@ Learn more about the power of `Turborepo`:
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
 
-### Demo
-
-![Watch The Application Priview](https://i.imgur.com/uqaVfjN.png)
 
 ### Backend Architecture
 
